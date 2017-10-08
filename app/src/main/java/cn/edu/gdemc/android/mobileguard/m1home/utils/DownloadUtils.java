@@ -13,14 +13,14 @@ public class DownloadUtils {
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         request.setAllowedOverRoaming(false);
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        String mimeString = mimeTypeMap.getMimeTypeFromExtension(mimeTypeMap.getFileExtensionFromUrl(url));
+        String mimeString = mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(url));
         request.setMimeType(mimeString);
 
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
         request.setVisibleInDownloadsUi(true);
 
-        request.setDestinationInExternalPublicDir("/download",targetFile);
-        DownloadManager downloadManager=(DownloadManager)context.getSystemService(context.DOWNLOAD_SERVICE);
-        long mTaskid=downloadManager.enqueue(request);
+        request.setDestinationInExternalPublicDir("/download" ,targetFile);
+        DownloadManager downloadManager = (DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
+        long mTaskid = downloadManager.enqueue(request);
     }
 }

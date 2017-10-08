@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
@@ -108,16 +109,16 @@ public class VersionUpdateUtils {
             @Override
             public void onClick(DialogInterface dialogInterface,int i){
                 downloadNewApk(versionEntity.apkurl);
-                Toast.makeText(context,"肯能下载饿了",Toast.LENGTH_LONG).show();
+                //Toast.makeText(context,"肯能下载饿了",Toast.LENGTH_LONG).show();
             }
         });
-       builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
-           @Override
-           public void onClick(DialogInterface dialogInterface, int i) {
-               dialogInterface.dismiss();
-               enterHome();
-           }
-       });
+        builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                enterHome();
+            }
+        });
         builder.show();
     }
     private void enterHome(){
