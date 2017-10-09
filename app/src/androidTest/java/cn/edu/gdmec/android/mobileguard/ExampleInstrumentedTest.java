@@ -1,4 +1,4 @@
-package cn.edu.gdemc.android.mobileguard;
+package cn.edu.gdmec.android.mobileguard;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("cn.edu.gdemc.android.mobileguard", appContext.getPackageName());
+        assertEquals("cn.edu.gdmec.android.mobileguard", appContext.getPackageName());
     }
 }

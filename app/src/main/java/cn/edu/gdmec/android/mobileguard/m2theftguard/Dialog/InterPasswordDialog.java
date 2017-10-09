@@ -1,4 +1,4 @@
-package cn.edu.gdemc.android.mobileguard.m2theftguard.Dialog;
+package cn.edu.gdmec.android.mobileguard.m2theftguard.Dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import cn.edu.gdemc.android.mobileguard.R;
+import cn.edu.gdmec.android.mobileguard.R;
 
 /**
  * Created by zhuang zhu on 2017-10-07.
