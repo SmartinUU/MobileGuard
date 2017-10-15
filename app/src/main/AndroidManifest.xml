@@ -3,7 +3,8 @@
     package="cn.edu.gdmec.android.mobileguard">
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- *允许应用接通网络 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,14 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="cn.edu.gdmec.android.mobileguard.SplashActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.edu.gdmec.android.mobileguard.m1home.HomeActivity"></activity>
+        <activity android:name=".m1home.HomeActivity" />
+        <activity android:name=".m2theftguard.LostFindActivity" />
+        <activity android:name=".m2theftguard.Setup1Activity" />
+        <activity android:name=".m2theftguard.Setup2Activity" />
+        <activity android:name=".m2theftguard.Setup3Activity" />
+        <activity android:name=".m2theftguard.Setup4Activity" />
 
     </application>
 

@@ -21,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run(){
                 super.run();
                 versionUpdateUtils.getCloudVersion();
-                //给予虚拟机下载权限
+                //再次给予虚拟机下载权限
             }
         }.start();
 
