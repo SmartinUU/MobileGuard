@@ -14,9 +14,9 @@ public class Setup2Activity extends BaseSetupActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup_1);
+        setContentView(R.layout.activity_setup_2);
         //设置第一个小圆点颜色
-        ((RadioButton)findViewById(R.id.rb_first)).setChecked(true);
+        ((RadioButton)findViewById(R.id.rb_second)).setChecked(true);
     }
 
     @Override
