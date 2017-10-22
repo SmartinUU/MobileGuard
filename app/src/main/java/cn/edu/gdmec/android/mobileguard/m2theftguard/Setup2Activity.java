@@ -75,7 +75,7 @@ public class Setup2Activity extends BaseSetupActivity implements View.OnClickLis
             mBindSIMBtn.setEnabled(false);
         }else{
             Toast.makeText(this,"SIM卡绑定成功!",Toast.LENGTH_SHORT).show();
-            mBindSIMBtn.setEnabled(true);
+            mBindSIMBtn.setEnabled(false);
         }
 
     }
