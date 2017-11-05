@@ -20,6 +20,7 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.Dialog.SetUpPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.MyDeviceAdminReceiver;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
+import cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity;
 
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
@@ -48,6 +49,9 @@ public class HomeActivity extends AppCompatActivity {
                             showSetUpPswdDialog();
                             //Toast.makeText(HomeActivity.this,"打开设置窗口",Toast.LENGTH_SHORT).show();
                         }
+                        break;
+                    case 1:
+                        startActivity(SecurityPhoneActivity.class);
                         break;
                 }
             }
