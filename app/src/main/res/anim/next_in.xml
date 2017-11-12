@@ -7,5 +7,18 @@
     android:duration="500"
     android:repeatCount="0"
     >
+    <alpha
+        android:duration="500"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0" />
+    <rotate
+        android:duration="500"
+        android:fromDegrees="0"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:pivotX="50%p"
+        android:pivotY="50%p"
+        android:startOffset="0"
+        android:toDegrees="360"
+        android:toYScale="0" />
 
 </translate>
