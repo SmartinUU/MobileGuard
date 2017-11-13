@@ -2,7 +2,6 @@ package cn.edu.gdmec.android.mobileguard.m3communicationguard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m2theftguard.ContactSelectActivity;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.adapter.BlackContactAdapter;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.dao.BlackNumberDao;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContactInfo;
@@ -32,10 +30,40 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     private BlackNumberDao dao;
     private ListView mListView;
     private int pagenumber = 0;
-    private int pagesize = 10;
+    private int pagesize = 15;
     private int totalNumber;
     private List<BlackContactInfo> pageBlackNumber = new ArrayList<BlackContactInfo>();
     private BlackContactAdapter adapter;
+
+
+    @Override
+    protected void onCreate( Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_security_phone);
+        initView();
+        fillData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(totalNumber != dao.getTotalNumber()){
+            if (dao.getTotalNumber()>0){
+                mHaveBlackNumber.setVisibility(View.VISIBLE);
+                mNoBlackNumber.setVisibility(View.GONE);
+            }else {
+                mHaveBlackNumber.setVisibility(View.GONE);
+                mNoBlackNumber.setVisibility(View.VISIBLE);
+            }
+            pagenumber = 0;
+            pageBlackNumber.clear();
+            pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber,pagesize));
+            if (adapter != null){
+                adapter.notifyDataSetChanged();
+            }
+        }
+    }
 
     private void fillData(){
         dao = new BlackNumberDao(SecurityPhoneActivity.this);
@@ -68,8 +96,8 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     private void initView(){
         findViewById(R.id.rl_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.bright_purple));
-        ((TextView)findViewById(R.id.tv_title)).setText("通讯卫士");
         ImageView mLeftImgv = (ImageView)findViewById(R.id.imgv_leftbtn);
+        ((TextView)findViewById(R.id.tv_title)).setText("通讯卫士");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
         mHaveBlackNumber = (FrameLayout)findViewById(R.id.fl_haveblacknumber);
@@ -85,7 +113,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
                         if (lastVisiablePosition == pageBlackNumber.size()-1){
                             pagenumber++;
                             if (pagenumber * pagesize >= totalNumber){
-                                Toast.makeText(SecurityPhoneActivity.this,"没有更多的数据了",Toast.LENGTH_LONG).show();
+                                Toast.makeText(SecurityPhoneActivity.this,"没有更多的数据了",0).show();
 
                             }else {
                                 pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber,pagesize));
@@ -104,42 +132,15 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_security_phone);
-        initView();
-        fillData();
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.imgv_leftbtn:
                 finish();
                 break;
             case R.id.btn_addblacknumber:
-                startActivityForResult(
-                        new Intent(this, AddBlackNumberActivity.class),0);
+                startActivity(new Intent(this,AddBlackNumberActivity.class));
                 break;
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (dao.getTotalNumber()>0){
-            mHaveBlackNumber.setVisibility(View.VISIBLE);
-            mNoBlackNumber.setVisibility(View.GONE);
-        }else {
-            mHaveBlackNumber.setVisibility(View.GONE);
-            mNoBlackNumber.setVisibility(View.VISIBLE);
-        }
-        pagenumber = 0;
-        pageBlackNumber.clear();
-        pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber,pagesize));
-        if (adapter!=null){
-            adapter.notifyDataSetChanged();
-        }
-    }
 }
