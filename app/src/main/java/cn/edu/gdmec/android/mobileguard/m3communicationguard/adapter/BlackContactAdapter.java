@@ -56,7 +56,7 @@ public class BlackContactAdapter extends BaseAdapter{
             view = View.inflate(context,R.layout.item_list_blackcontact,null);
             holder = new ViewHolder();
             holder.mNameTV = (TextView)view.findViewById(R.id.tv_black_name);
-            holder.mModeTV = (TextView)view.findViewById(R.id.tv_black_mode);
+            holder.mModeTV = (TextView)view.findViewById(R.id.tv_balck_mode);
             holder.mContactImgv = view.findViewById(R.id.view_black_icon);
             holder.mDeleteView =view.findViewById(R.id.view_black_delete);
             view.setTag(holder);

@@ -23,11 +23,11 @@ public class Setup4Activity extends BaseSetupActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_4);
         //设置第一个小圆点颜色
-        ((RadioButton)findViewById(R.id.rb_fourth)).setChecked(true);
+        ((RadioButton)findViewById(R.id.rb_four)).setChecked(true);
         initView();
     }
     private void initView(){
-        ((RadioButton)findViewById(R.id.rb_fourth)).setChecked(true);
+        ((RadioButton)findViewById(R.id.rb_four)).setChecked(true);
         mStatusTV = (TextView)findViewById(R.id.tv_setup4_status);
         mToggleButton = (ToggleButton) findViewById(R.id.togglebtn_securityfunction);
         mToggleButton.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener(){

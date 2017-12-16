@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="cn.edu.gdmec.android.mobileguard">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,8 +16,10 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/><!--11/25清理缓存-->
-    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermission,ProtectedPermissions"/>
 
     <application
         android:name=".App"
@@ -103,7 +106,31 @@
         <activity android:name=".m5virusscan.VirusScanActivity" />
         <activity android:name=".m5virusscan.VirusScanSpeedActivity" />
         <activity android:name=".m6cleancache.CacheClearListActivity" />
-        <activity android:name=".m6cleancache.CleanCacheActivity"></activity>
+        <activity android:name=".m6cleancache.CleanCacheActivity" />
+        <!--m8-->
+        <activity android:name=".m8trafficmonitor.OpenratorSetActivity"/>
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"/>
+        <service
+            android:name=".m8trafficmonitor.service.TrafficMonitoringService"
+            android:enabled="true"
+            android:exported="true"
+            android:persistent="true"/>
+        <receiver android:name=".m8trafficmonitor.reciever.BootCompleteReciever"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <!--m9-->
+        <activity android:name=".m9advancedtools.AdvancedToolsActivity"/>
+        <activity android:name=".m9advancedtools.AppLockActivity"/>
+        <activity android:name=".m9advancedtools.EnterPswActivity"/>
+        <activity android:name=".m9advancedtools.NumBelongtoActivity"/>
+        <activity android:name=".m9advancedtools.SMSBackupActivity"/>
+        <activity android:name=".m9advancedtools.SMSReducitionActivity"/>
+        <service android:name=".m9advancedtools.service.AppLockService"
+            android:persistent="true"/>
     </application>
 
 </manifest>

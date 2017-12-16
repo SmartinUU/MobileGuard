@@ -33,7 +33,7 @@ public class SetUpPasswordDialog extends Dialog implements View.OnClickListener 
     /*初始化控件*/
     private void initView(){
         mTitleTv = (TextView)findViewById(R.id.tv_setuppwd_title);
-        mFirstPWDET = (EditText)findViewById(R.id.et_first_password);
+        mFirstPWDET = (EditText)findViewById(R.id.et_firstpwd);
         mAffirmET = (EditText)findViewById(R.id.et_affirm_password);
         findViewById(R.id.btn_ok).setOnClickListener(this);
         findViewById(R.id.btn_cancel).setOnClickListener(this);
