@@ -29,6 +29,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.edu.gdmec.android.mobileguard.R;
+import cn.edu.gdmec.android.mobileguard.SplashActivity;
 import cn.edu.gdmec.android.mobileguard.m1home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1home.entity.VersionEntity;
 
@@ -98,6 +99,10 @@ public class VersionUpdateUtils {
         this.context = context;
         this.downloadCallback = downloadCallback;
         this.nextActivty = nextActivty;
+    }
+
+    public VersionUpdateUtils(String mVersion, SplashActivity splashActivity) {
+
     }
 
 //    public VersionUpdateUtils(String localDbVersion, VirusScanActivity virusScanActivity) {
@@ -245,6 +250,9 @@ public class VersionUpdateUtils {
         context.registerReceiver(broadcastReceiver, intentFilter);
 
     }
+
+
+
     public interface DownloadCallback{
         void afterDownload(String filename);
     }
