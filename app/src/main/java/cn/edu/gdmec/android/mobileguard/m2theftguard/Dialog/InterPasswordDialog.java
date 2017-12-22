@@ -19,11 +19,13 @@ import cn.edu.gdmec.android.mobileguard.R;
 public class InterPasswordDialog extends Dialog implements View.OnClickListener {
     private TextView mTitleTV;
     private EditText mInterET;
-    private Button mOkBtn;
-    private Button mCancelBtn;
+    private Button mOKBtn;
+    private Button mCancleBtn;
     private MyCallBack myCallBack;
+    private Context context;
     public InterPasswordDialog(@NonNull Context context) {
-        super(context);
+        super(context, R.style.dialog_custom);
+        this.context = context;
     }
 
     @Override
@@ -32,13 +34,13 @@ public class InterPasswordDialog extends Dialog implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         initView();
     }
-    private void initView(){
+    private void initView() {
         mTitleTV = (TextView)findViewById(R.id.tv_interpwd_title);
         mInterET = (EditText)findViewById(R.id.et_inter_password);
-        mOkBtn = (Button)findViewById(R.id.btn_comfirm);
-        mCancelBtn = (Button)findViewById(R.id.btn_cancel);
-        mOkBtn.setOnClickListener(this);
-        mCancelBtn.setOnClickListener(this);
+        mOKBtn = (Button)findViewById(R.id.btn_comfirm);
+        mCancleBtn = (Button)findViewById(R.id.btn_dismiss);
+        mOKBtn.setOnClickListener(this);
+        mCancleBtn.setOnClickListener(this);
     }
     public void setTitle(String title){
         if(!TextUtils.isEmpty(title)){
@@ -66,3 +68,4 @@ public class InterPasswordDialog extends Dialog implements View.OnClickListener 
         void cancel();
     }
 }
+
